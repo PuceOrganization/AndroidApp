@@ -1,0 +1,115 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation ="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="materialdesign.login.RegistrarseActivity">
+
+
+    <!--Falta Agregar cadena de texto en strings.xml para cada editText y Botones-->
+
+    <EditText
+        android:id="@+id/etNickName"
+        android:hint="Nick name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etRegnombre"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/etRegnombre"
+        android:layout_alignEnd="@+id/etRegnombre"
+        android:singleLine="true" />
+
+
+    <EditText
+        android:id="@+id/etRegnombre"
+        android:hint="Nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etRegApellido"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/etRegApellido"
+        android:layout_alignEnd="@+id/etRegApellido"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/etRegApellido"
+        android:hint="Apellido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etRegMail"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/etRegMail"
+        android:hint="Email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:layout_above="@+id/etRegPassword"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/etRegPassword"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etRegPasswordConf"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/etRegMail"
+        android:layout_alignEnd="@+id/etRegMail"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/etRegPasswordConf"
+        android:hint="Confirmar contraseña"
+        android:inputType="textPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etRegCodReg"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/etRegPassword"
+        android:layout_alignEnd="@+id/etRegPassword"
+        android:singleLine="true" />
+    <EditText
+        android:id="@+id/etRegCodReg"
+        android:hint="Codigo de Registro"
+        android:inputType="number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/butRegCuenta"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="23dp"
+        android:layout_alignRight="@+id/etRegPassword"
+        android:layout_alignEnd="@+id/etRegPassword"
+        android:singleLine="true" />
+
+    <Button
+        android:id="@+id/butRegCuenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crear cuenta"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="27dp" />
+
+
+</RelativeLayout>
