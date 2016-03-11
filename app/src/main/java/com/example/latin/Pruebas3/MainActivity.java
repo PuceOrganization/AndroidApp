@@ -18,16 +18,29 @@ import com.example.latin.Pruebas3.Fragmentos.Fragmento_2;
 import com.example.latin.Pruebas3.Fragmentos.Fragmento_1;
 import com.example.latin.Pruebas3.Fragmentos.GmapFragment;
 import com.example.latin.Pruebas3.Fragmentos.Main_Fragment;
+import com.example.latin.Pruebas3.SQLite.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+
+    //Creando instancia para la BDD
+    DatabaseHelper myDb;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //creando la nueva instancia
+        myDb = new DatabaseHelper(this);
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
