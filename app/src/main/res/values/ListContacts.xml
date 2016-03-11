@@ -2,6 +2,7 @@
 <resources>
 
     <!--Valores para la lista de contactos dinamica-->
+
     <string-array name="contact_list">
 
         <item>Poncho</item>
@@ -14,6 +15,8 @@
         <item>Este5</item>
         <item>Este6</item>
         <item>Este7</item>
+        <item>Este7</item>
+
 
 
 
