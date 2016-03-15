@@ -49,6 +49,35 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <!-- for Gingerbread GSF backward compat -->
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="com.google.android.gcm.demo" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".service.GcmService" android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".service.LoggingService" android:exported="false" />
+
+        <service
+            android:name=".service.TaskSchedulerService"
+            android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY" />
+                <category android:name="com.google.android.gcm.demo" />
+            </intent-filter>
+        </service>
+
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBXQU0aWHZH7s0XIvJNFGzJNGrnMiUG0Gw"/>
 
 

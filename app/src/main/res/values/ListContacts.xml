@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Valores para la lista de contactos dinamica-->
+
+    <string-array name="contact_list">
+
+        <item>Poncho</item>
+        <item>Latin</item>
+        <item>Ogi</item>
+        <item>Este1</item>
+        <item>Este2</item>
+        <item>Este3</item>
+        <item>Este4</item>
+        <item>Este5</item>
+        <item>Este6</item>
+        <item>Este7</item>
+        <item>Este7</item>
+
+
+
+
+    </string-array>
+
+</resources>
