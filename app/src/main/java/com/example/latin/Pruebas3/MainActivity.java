@@ -16,17 +16,15 @@ import android.view.MenuItem;
 
 import com.example.latin.Pruebas3.Fragmentos.ContactsFragment;
 import com.example.latin.Pruebas3.Fragmentos.Fragmento_2;
-import com.example.latin.Pruebas3.Fragmentos.Fragmento_1;
 import com.example.latin.Pruebas3.Fragmentos.GmapFragment;
 import com.example.latin.Pruebas3.Fragmentos.Main_Fragment;
-import com.example.latin.Pruebas3.SQLite.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
     //Creando instancia para la BDD
-    DatabaseHelper myDb;
+    //DatabaseHelper myDb;
 
 
     @Override
@@ -35,7 +33,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         //creando la nueva instancia
-        myDb = new DatabaseHelper(this);
+        //myDb = new DatabaseHelper(this);
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
