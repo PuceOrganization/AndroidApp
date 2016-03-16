@@ -14,10 +14,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.latin.Pruebas3.Fragmentos.ContactsFragment;
 import com.example.latin.Pruebas3.Fragmentos.Fragmento_2;
+import com.example.latin.Pruebas3.Fragmentos.Fragmento_1;
 import com.example.latin.Pruebas3.Fragmentos.GmapFragment;
 import com.example.latin.Pruebas3.Fragmentos.Main_Fragment;
+//import com.example.latin.Pruebas3.SQLite.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -106,9 +107,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
 
-            //Opcion del Fragmento que ingresara a la lista de contactos
-
-            fm.beginTransaction().replace(R.id.content_frame,new ContactsFragment()).commit();
+            fm.beginTransaction().replace(R.id.content_frame, new Fragmento_1()).commit();
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
