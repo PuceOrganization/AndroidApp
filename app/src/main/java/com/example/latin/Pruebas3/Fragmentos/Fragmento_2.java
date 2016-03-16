@@ -7,6 +7,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +18,11 @@ import android.widget.ListView;
 import com.example.latin.Pruebas3.R;
 import com.example.latin.Pruebas3.Utils.UtilsMessage;
 import com.example.latin.Pruebas3.logic.Message;
+import com.example.latin.Pruebas3.service.GcmService;
+import com.example.latin.Pruebas3.service.LoggingService;
 import com.example.latin.Pruebas3.service.MessageListAdapter;
 import com.example.latin.Pruebas3.service.Upstream;
+import com.google.android.gms.gcm.GcmListenerService;
 import com.google.android.gms.iid.InstanceID;
 
 import java.io.IOException;
@@ -69,10 +73,12 @@ public class Fragmento_2 extends Fragment {
                 // Sending message to web socket server
 //                sendMessageToServer(utils.getSendMessageJSON(inputMsg.getText()
 //                        .toString()));
-                sendMessageToServer(inputMsg.getText()
-                        .toString());
+                sendMessageToServer(utils.getSendMessageJSON(inputMsg.getText()
+                        .toString()));
                 // Clearing the input filed once message was sent
+                parseMessage(inputMsg.getText().toString());
                 inputMsg.setText("");
+
             }
         });
 
@@ -104,8 +110,13 @@ public class Fragmento_2 extends Fragment {
 
         }
 
-        upstream.doGcmSendUpstreamMessage(getActivity(),"59156844246",message,"key",message);
+        upstream.doGcmSendUpstreamMessage(getActivity(), "59156844246", message, "key", message);
 
+    }
+
+    private void parseMessage(String message){
+        Message m = new Message("Diego",message,true);
+        appendMessage(m);
     }
 
     private void appendMessage(final Message m) {
@@ -134,4 +145,7 @@ public class Fragmento_2 extends Fragment {
             e.printStackTrace();
         }
     }
+
+
+
 }
