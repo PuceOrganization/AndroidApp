@@ -1,12 +1,17 @@
 package com.example.latin.Pruebas3.Fragmentos;
 
 import android.app.Fragment;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.LocalBroadcastManager;
+import android.text.BoringLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.latin.Pruebas3.R;
+import com.example.latin.Pruebas3.Utils.GcmAction;
 import com.example.latin.Pruebas3.Utils.UtilsMessage;
 import com.example.latin.Pruebas3.logic.Message;
 import com.example.latin.Pruebas3.service.GcmService;
@@ -27,6 +33,7 @@ import com.google.android.gms.iid.InstanceID;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import static com.google.android.gms.internal.zzir.runOnUiThread;
@@ -44,6 +51,7 @@ public class Fragmento_2 extends Fragment {
     private ListView listViewMessages;
     private View myFragmentView;
     private Upstream upstream = new Upstream();
+
 
     private UtilsMessage utils;
 
@@ -76,7 +84,7 @@ public class Fragmento_2 extends Fragment {
                 sendMessageToServer(utils.getSendMessageJSON(inputMsg.getText()
                         .toString()));
                 // Clearing the input filed once message was sent
-                parseMessage(inputMsg.getText().toString());
+                parseMessage(inputMsg.getText().toString(),"Diego",Boolean.TRUE);
                 inputMsg.setText("");
 
             }
@@ -89,9 +97,15 @@ public class Fragmento_2 extends Fragment {
 
 
 
+//        String test = getArguments().getString("mensaje");
+//        String user = getArguments().getString("user");
+//        Boolean response = new Boolean(getArguments().getString("response"));
+//        parseMessage(test,user,false);
         return myFragmentView;
 
     }
+
+
 
     //Metodo para enviar mensajes
     private void sendMessageToServer(String message) {
@@ -110,13 +124,18 @@ public class Fragmento_2 extends Fragment {
 
         }
 
-        upstream.doGcmSendUpstreamMessage(getActivity(), "59156844246", message, "key", message);
+        upstream.doGcmSendUpstreamMessage(getActivity(), "59156844246", "Android", "mensaje", message);
 
     }
 
-    private void parseMessage(String message){
-        Message m = new Message("Diego",message,true);
-        appendMessage(m);
+    private void parseMessage(String message,String to,Boolean response){
+
+        if(message!=null){
+            Message m = new Message(to,message,response);
+            appendMessage(m);
+        }
+
+
     }
 
     private void appendMessage(final Message m) {
@@ -146,6 +165,40 @@ public class Fragmento_2 extends Fragment {
         }
     }
 
+    @Override
+    public void onPause() {
+        // Unregister since the activity is paused.
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(
+                mMessageReceiver);
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        // Register to receive messages.
+        // We are registering an observer (mMessageReceiver) to receive Intents
+        // with actions named "custom-event-name".
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
+                mMessageReceiver, new IntentFilter("custom-event-name"));
+        super.onResume();
+    }
+
+    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // TODO Auto-generated method stub
+            // Get extra data included in the Intent
+
+            //        String test = getArguments().getString("mensaje");
+//        String user = getArguments().getString("user");
+
+            parseMessage(intent.getStringExtra("mensaje"),intent.getStringExtra("user"),false);
+
+            System.out.println("entro al broadcast fragmento");
+            String message = intent.getStringExtra("message");
+            System.out.println("message: "+message);
+        }
+    };
 
 
 }
