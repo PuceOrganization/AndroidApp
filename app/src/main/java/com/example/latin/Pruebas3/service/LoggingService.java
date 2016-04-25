@@ -20,6 +20,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
@@ -67,6 +68,9 @@ public class LoggingService extends IntentService {
             default:
                 Log.e(LOG_TAG, "LoggingService received unknown action: " + intent.getAction());
         }
+
+        Bundle extras = intent.getExtras();
+
     }
 
     private void doLog(Intent intent) {

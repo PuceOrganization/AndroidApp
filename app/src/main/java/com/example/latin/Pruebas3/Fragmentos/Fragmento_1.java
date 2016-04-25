@@ -13,6 +13,7 @@ import com.example.latin.Pruebas3.R;
  * Created by Latin on 23/02/2016.
  */
 public class Fragmento_1 extends Fragment {
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
