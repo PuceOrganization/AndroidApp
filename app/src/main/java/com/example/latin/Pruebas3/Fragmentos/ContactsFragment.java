@@ -4,6 +4,7 @@ package com.example.latin.Pruebas3.Fragmentos;
  * Created by Administrador on 18/02/2016.
  */
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -68,14 +69,10 @@ public class ContactsFragment extends Fragment {
 
                 AppCompatActivity app = new AppCompatActivity();
 
-                //Toast.makeText(ContactsFragment.this,"Message" + strListContacts[position],Toast.LENGTH_SHORT).show();
-                System.out.println("Click en" + strListContacts[position]);
 
-                //startActivity(new Intent(ContactsFragment.this, ScrollingActivity.class));
-                //app.startActivity(new Intent(ContactsFragment.this, ScrollingActivity.class));
-                Intent i;
-                i = new Intent(getActivity(),ScrollingActivity.class);
-                startActivity(i);
+                System.out.println("Click en" + strListContacts[position]);
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.content_frame, new Fragmento_2()).commit();
 
 
             }

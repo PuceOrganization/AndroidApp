@@ -5,7 +5,7 @@ package com.example.latin.Pruebas3.logic;
  */
 public class Message {
 
-    private String fromName, message;
+    private String fromName,message;
     private boolean isSelf;
 
     public Message() {

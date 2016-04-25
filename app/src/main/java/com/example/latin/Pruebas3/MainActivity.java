@@ -21,6 +21,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.latin.Pruebas3.Fragmentos.ContactsFragment;
 import com.example.latin.Pruebas3.Fragmentos.Fragmento_2;
 import com.example.latin.Pruebas3.Fragmentos.Fragmento_1;
 import com.example.latin.Pruebas3.Fragmentos.GmapFragment;
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         FragmentManager fm = getFragmentManager();
-        fm.beginTransaction().replace(R.id.content_frame, new Main_Fragment()).commit();
+        fm.beginTransaction().replace(R.id.content_frame, new GmapFragment()).commit();
 
 
 
@@ -128,7 +129,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
-            fm.beginTransaction().replace(R.id.content_frame, new Main_Fragment()).commit();
+            fm.beginTransaction().replace(R.id.content_frame, new ContactsFragment()).commit();
 
         } else if (id == R.id.nav_manage) {
             fm.beginTransaction().replace(R.id.content_frame, fr).commit();
