@@ -9,6 +9,8 @@ import android.widget.Toast;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * Created by diego on 1/2/2016.
@@ -19,21 +21,25 @@ public class Upstream {
 
     }
 
-    public void doGcmSendUpstreamMessage(Activity activity, String senderId, String msgId,String key, String value){
+    public void doGcmSendUpstreamMessage(Activity activity, String senderId, String msgId,String type, String message){
         final GoogleCloudMessaging gcm = GoogleCloudMessaging.getInstance(activity);
         final String senderID = senderId;
         final String msgID = msgId;
         //final String TTL = ttl;
         final String msgIdentificator = msgId;
         final Bundle data = new Bundle();
-        data.putString(key,value);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+        data.putString("type",type);
+        data.putString("sentDate", format.format(Calendar.getInstance().getTime()));
+        data.putString("messageText",message);
 
 
-        new AsyncTask<Void, Void, String>() {
+                new AsyncTask<Void, Void, String>() {
             @Override
             protected String doInBackground(Void... params) {
                 try {
-                   // gcm.send(senderID + "@gcm.googleapis.com", msgID, data);
+                    // gcm.send(senderID + "@gcm.googleapis.com", msgID, data);
                     gcm.send(senderID + "@gcm.googleapis.com", msgID,Long.parseLong("1000"), data);
 
 
@@ -54,7 +60,7 @@ public class Upstream {
                             Toast.LENGTH_LONG).show();
                 }
             }
-        }.execute(null,null,null);
+                }.execute(null,null,null);
     }
 
 }

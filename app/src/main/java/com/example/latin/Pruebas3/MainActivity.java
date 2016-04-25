@@ -1,9 +1,16 @@
 package com.example.latin.Pruebas3;
 
 import android.app.FragmentManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -26,30 +33,18 @@ public class MainActivity extends AppCompatActivity
 
     //Creando instancia para la BDD
     //DatabaseHelper myDb;
-
+    public Fragmento_2 fr = new Fragmento_2();
+    private BroadcastReceiver mRegistrationBroadcastReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //creando la nueva instancia
-        //myDb = new DatabaseHelper(this);
-
+        fr = new Fragmento_2();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
-       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -62,6 +57,24 @@ public class MainActivity extends AppCompatActivity
 
         FragmentManager fm = getFragmentManager();
         fm.beginTransaction().replace(R.id.content_frame, new Main_Fragment()).commit();
+
+
+
+//        Intent gcmIntent = getIntent();
+//        String message = gcmIntent.getStringExtra("mensaje");
+//        String user = gcmIntent.getStringExtra("user");
+//        String response = gcmIntent.getStringExtra("response");
+//        System.out.println("mensaje prueba" + message);
+//
+//        Bundle bundle = new Bundle();
+//        bundle.putString("mensaje",message);
+//        bundle.putString("user",user);
+//        bundle.putString("reponse",response);
+//
+//        fr.setArguments(bundle);
+
+
+
     }
 
     @Override
@@ -118,7 +131,7 @@ public class MainActivity extends AppCompatActivity
             fm.beginTransaction().replace(R.id.content_frame, new Main_Fragment()).commit();
 
         } else if (id == R.id.nav_manage) {
-            fm.beginTransaction().replace(R.id.content_frame, new Fragmento_2()).commit();
+            fm.beginTransaction().replace(R.id.content_frame, fr).commit();
 
         } else if (id == R.id.nav_share) {
 
@@ -130,4 +143,35 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+//    @Override
+//    protected void onPause() {
+//        // Unregister since the activity is paused.
+//        LocalBroadcastManager.getInstance(this).unregisterReceiver(
+//                mMessageReceiver);
+//        super.onPause();
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        // Register to receive messages.
+//        // We are registering an observer (mMessageReceiver) to receive Intents
+//        // with actions named "custom-event-name".
+//        LocalBroadcastManager.getInstance(this).registerReceiver(
+//                mMessageReceiver, new IntentFilter("custom-event-name"));
+//        super.onResume();
+//    }
+
+//    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            // TODO Auto-generated method stub
+//            // Get extra data included in the Intent
+//            System.out.println("entro al broadcast");
+//            String message = intent.getStringExtra("message");
+//            System.out.println("message: "+message);
+//        }
+//    };
+
+
 }
